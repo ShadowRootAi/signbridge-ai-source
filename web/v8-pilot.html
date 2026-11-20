@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f7fd">
+    <title>SignBridge AI · Νόημα σε κείμενο</title>
+    <link rel="stylesheet" href="/src/v8-pilot.css">
+    <script type="module" src="/src/v8-pilot.ts"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-frame header-content">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M4 23c5-1.1 8.1-5.1 12-12 3.9 6.9 7 10.9 12 12M4 23h24M16 10v14" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>SignBridge <span class="brand-ai">AI</span></span>
+        </div>
+        <span class="header-label">Ελληνική Νοηματική</span>
+      </div>
+    </header>
+
+    <main class="app-frame">
+      <div class="intro">
+        <h1>Νόημα σε κείμενο</h1>
+        <p>Κάνε ένα νόημα στην κάμερα ή επίλεξε ένα βίντεο.</p>
+      </div>
+
+      <div class="workspace">
+        <section id="capture-card" class="card capture-card" aria-labelledby="input-title">
+          <div class="card-heading">
+            <h2 id="input-title">Λήψη</h2>
+            <span class="privacy">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              Τοπική επεξεργασία
+            </span>
+          </div>
+
+          <div id="capture-stage" class="capture-stage" data-state="idle">
+            <div id="stage-empty" class="stage-empty">
+              <div class="framing" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <span class="stage-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><rect x="4.5" y="9" width="16" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="m20.5 14 6-3.5v11l-6-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p>Έτοιμο για λήψη</p>
+            </div>
+            <div id="camera-area" class="video-layer" hidden>
+              <video id="live-video" muted playsinline aria-label="Ζωντανή εικόνα κάμερας"></video>
+            </div>
+            <div id="preview-area" class="video-layer" hidden>
+              <video id="preview-video" controls muted playsinline aria-label="Βίντεο προς ανάλυση"></video>
+            </div>
+            <span class="live-indicator"><span></span>Κάμερα ενεργή</span>
+          </div>
+
+          <div class="actions capture-actions">
+            <button id="open-camera" type="button" disabled>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m15 10 5-3v10l-5-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Άνοιγμα κάμερας
+            </button>
+            <button id="record" class="live-action" type="button" disabled><span class="record-dot" aria-hidden="true"></span>Καταγραφή</button>
+            <button id="stop-recording" class="live-action" type="button" disabled><span class="stop-square" aria-hidden="true"></span>Τέλος καταγραφής</button>
+            <button id="analyze" class="clip-action" type="button" disabled>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Ανάλυση βίντεο
+            </button>
+            <label class="file-action secondary">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Επιλογή βίντεο
+              <input id="file-input" type="file" accept="video/mp4,video/webm,.mp4,.webm" aria-label="Επιλογή βίντεο" aria-describedby="file-help">
+            </label>
+            <button id="clear" class="secondary clip-action" type="button" disabled>Καθαρισμός</button>
+            <button id="close-camera" class="secondary live-action" type="button" disabled>Κλείσιμο κάμερας</button>
+          </div>
+          <p id="file-help" class="visually-hidden">MP4 ή WebM, έως 15 δευτερόλεπτα και 40 MB.</p>
+          <label class="choice consent"><input id="consent" type="checkbox"> Δίνω άδεια για καταγραφή εικόνας.</label>
+          <label class="choice live-action" data-debug-only><input id="mirror" type="checkbox"> Καθρέφτης στην προεπισκόπηση</label>
+          <p id="media-info" class="muted" data-debug-only></p>
+          <div class="status-block">
+            <p id="status" role="status">Επίλεξε βίντεο ή άνοιξε την κάμερα.</p>
+            <p id="error" role="alert"></p>
+          </div>
+
+          <div class="debug-collection" data-debug-only>
+            <label class="choice"><input id="blind" type="checkbox"> Συλλογή με κρυφές προβλέψεις</label>
+            <fieldset id="collection-fields" hidden>
+              <legend>Στοιχεία πιλοτικής δοκιμής</legend>
+              <div class="columns">
+                <div><label for="signer-id">Ψευδώνυμο</label><input id="signer-id" placeholder="P001" maxlength="7" autocomplete="off"></div>
+                <div><label for="session-id">Συνεδρία</label><input id="session-id" placeholder="S01" maxlength="24" autocomplete="off"></div>
+                <div><label for="condition-id">Συνθήκη</label><select id="condition-id"><option value="A">Α</option><option value="B">Β</option></select></div>
+                <div><label for="trial-group">Είδος λήψης</label><select id="trial-group"><option value="known">Γνωστό νόημα</option><option value="close_unknown">Παρόμοιο άγνωστο νόημα</option><option value="daily">Καθημερινή κίνηση ή ακινησία</option><option value="tracking">Ελλιπής λήψη</option></select></div>
+                <div id="known-field"><label for="known-label">Επαληθευμένο νόημα</label><select id="known-label"><option value="">Επιλέξτε νόημα</option><option>ΓΕΙΑ</option><option>ΕΥΧΑΡΙΣΤΩ</option><option>ΕΝΤΑΞΕΙ</option></select></div>
+                <div id="unknown-field" hidden><label for="unknown-category">Κωδικός άγνωστης κατηγορίας</label><input id="unknown-category" placeholder="u_idle" maxlength="40" autocomplete="off"></div>
+              </div>
+              <label class="choice"><input id="collection-consent" type="checkbox"> Ο νέος συμμετέχων συμφωνεί, η λήψη είναι πραγματική και η ετικέτα ορίστηκε πριν από την πρόβλεψη.</label>
+            </fieldset>
+          </div>
+        </section>
+
+        <section id="result-card" class="card result-card" aria-labelledby="results-title">
+          <div class="card-heading"><h2 id="results-title">Το μήνυμά σου</h2></div>
+          <div class="result-placeholder">
+            <span class="message-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M26.5 14.7c0 5-4.7 9-10.5 9-1.3 0-2.6-.2-3.8-.6L7 25l1.2-4.1c-1.7-1.6-2.7-3.8-2.7-6.2 0-5 4.7-9 10.5-9s10.5 4 10.5 9Z" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/>
+                <circle cx="11.7" cy="14.7" r="1.15" fill="currentColor"/><circle cx="16" cy="14.7" r="1.15" fill="currentColor"/><circle cx="20.3" cy="14.7" r="1.15" fill="currentColor"/>
+              </svg>
+            </span>
+            <p>Το αποτέλεσμα θα εμφανιστεί εδώ.</p>
+          </div>
+          <div id="results" hidden>
+            <div id="public-result-area" class="public-result-area" hidden>
+              <output id="public-result" aria-live="polite" aria-atomic="true"></output>
+            </div>
+            <div id="visible-results" data-debug-only hidden>
+              <div class="columns debug-results">
+                <div class="debug-result"><h3>V4</h3><output id="baseline-result"></output></div>
+                <div class="debug-result"><h3>V8</h3><output id="v8-result"></output></div>
+              </div>
+              <p id="tracking-result" class="muted"></p>
+              <p id="timing-result" class="muted"></p>
+            </div>
+            <p id="blind-result" data-debug-only hidden>Οι προβλέψεις παραμένουν κρυφές μέχρι να ολοκληρωθεί η συλλογή.</p>
+            <div class="actions export-actions" data-debug-only>
+              <button id="save-report" type="button">Λήψη αναφοράς JSON</button>
+              <button id="save-video" class="secondary" type="button">Λήψη ίδιου βίντεο</button>
+            </div>
+          </div>
+          <div class="result-tip">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.65"/><path d="M12 11.5v4" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"/><circle cx="12" cy="8.4" r="1" fill="currentColor"/></svg>
+            <p>Κράτα και τα δύο χέρια και τους ώμους στο κάδρο.</p>
+          </div>
+        </section>
+      </div>
+
+      <footer class="app-footer">
+        <span>Υποστηριζόμενα νοήματα</span>
+        <ul aria-label="Υποστηριζόμενα νοήματα"><li>Γεια</li><li>Ευχαριστώ</li><li>Εντάξει</li></ul>
+      </footer>
+    </main>
+  </body>
+</html>

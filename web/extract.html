@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>SignBridge extraction harness</title></head>
+<body><p>Scientific extraction harness. No labels or filenames are provided to the classifier.</p>
+<script type="module">
+import { extractImagePaths, classifyFeatures, getModelStatus, analyzeVideo, warmupLandmarks, setModelSource } from '/src/pipeline.ts';
+import { preprocess } from '/src/features.ts';
+window.signbridge = { extractImagePaths, classifyFeatures, getModelStatus, analyzeVideo, warmupLandmarks, setModelSource, preprocess };
+</script></body></html>

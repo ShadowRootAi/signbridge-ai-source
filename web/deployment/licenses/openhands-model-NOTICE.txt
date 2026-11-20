@@ -1,0 +1,36 @@
+OpenHands Greek Sign Language ST-GCN
+Copyright 2021 - The AI4Bhārat team. All rights reserved.
+Apache License 2.0, reproduced in openhands-APACHE-2.0.txt.
+
+Source release
+https://github.com/AI4Bharat/OpenHands/releases/tag/checkpoints_v1
+Source checkpoint
+https://github.com/AI4Bharat/OpenHands/releases/download/checkpoints_v1/gsl_stgcn.zip
+Checkpoint ZIP SHA-256
+13f5d52bb052da8e6496f69c9bea810342f02495e1495753683a6f789d35c97a
+
+Model reference
+Prem Selvaraj, Gokul NC, Pratyush Kumar, and Mitesh Khapra (2022).
+OpenHands: Making Sign Language Recognition Accessible with Pose-based
+Pretrained Models across Languages. ACL 2022.
+https://aclanthology.org/2022.acl-long.150/
+
+SignBridge converted the trained PyTorch checkpoint to ONNX for local browser
+inference. SignBridge selected 120 of the model's 310 labels for evaluation
+and calibrated the acceptance thresholds. The trained weights were not retrained.
+ONNX SHA-256
+8ace9360ed396ecd6df2670a9c34d1bab271d6384808f2972456355c577fbd79
+
+Training source and gloss labels
+The Greek Sign Language (GSL) Dataset, Zenodo record 4756317.
+Ilias Papastratis, Nikolas Adaloglou, Andreas Stergioulas, Theocharis Chatzis,
+Georgios Th. Papadopoulos, Vassia Zacharopoulou, George J. Xydopoulos,
+Klimnis Atzakas, Dimitris Papazachariou, Kosmas Dimitropoulos, and Petros Daras.
+https://doi.org/10.5281/zenodo.4756317
+
+Pose source used by OpenHands
+OpenHands v1: Labelled ISLR datasets - Poses, Gokul NC and Premkumar Selvaraj.
+https://doi.org/10.5281/zenodo.6674324
+
+Both dataset records specify Creative Commons Attribution 4.0 International.
+https://creativecommons.org/licenses/by/4.0/

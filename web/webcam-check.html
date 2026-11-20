@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SignBridge · Τοπική δοκιμή κάμερας</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f4f6f9;color:#203047;margin:0;line-height:1.55}main{max-width:900px;margin:auto;padding:24px 18px 50px}h1{font-size:1.8rem}h2{font-size:1.15rem}.card{background:white;border:1px solid #d5deea;border-radius:10px;padding:20px;margin:18px 0}.notice{border-left:4px solid #b47b10;background:#fff8e7;padding:12px}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}button,select{font:inherit;min-height:44px;padding:9px 14px;border-radius:6px;border:1px solid #9caec5}button{background:#2258a0;color:white;cursor:pointer}button.secondary{background:white;color:#244468}button:disabled{opacity:.45;cursor:not-allowed}label{display:block;margin:12px 0}input[type=checkbox]{width:18px;height:18px;vertical-align:middle;margin-right:8px}video{display:block;width:100%;max-height:430px;object-fit:contain;background:#142235;transform:none;border-radius:7px}.videos{display:grid;grid-template-columns:1fr 1fr;gap:18px}.count{font-size:2rem;font-weight:700;color:#2258a0}#error{color:#9a2437}#status{font-weight:600}small{color:#576a80}li{margin:8px 0}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #3192d9;outline-offset:3px}[hidden]{display:none!important}@media(max-width:650px){.videos{grid-template-columns:1fr}}
+</style></head><body><main>
+<h1>Σύντομη τοπική δοκιμή κάμερας</h1>
+<p>Τέσσερις απλές καθημερινές καταστάσεις για τον έλεγχο λανθασμένων αναγνωρίσεων. <strong>Δεν χρειάζεται να γνωρίζετε Ελληνική Νοηματική.</strong> Δεν θα εμφανιστούν προβλέψεις κατά τη συλλογή.</p>
+<p class="notice">Καταγράφεται μόνο εικόνα, χωρίς μικρόφωνο. Το βίντεο μένει αρχικά στη μνήμη του browser και αποθηκεύεται στον φάκελο αυτού του υπολογιστή μόνο όταν πατήσετε «Επιβεβαίωση και τοπική αποθήκευση». Οι καταγραφές προορίζονται για ξεχωριστό παρατηρησιακό έλεγχο, όχι για ρύθμιση των ορίων του μοντέλου.</p>
+<section class="card"><h2>1. Άδεια και κάμερα</h2>
+<label><input id="consent" type="checkbox">Συμφωνώ να καταγράψω σύντομα βίντεο και να τα αποθηκεύσω τοπικά για αυτή τη δοκιμή.</label>
+<div class="row"><button id="open-camera" disabled>Άνοιγμα κάμερας</button><button id="close-camera" class="secondary" disabled>Κλείσιμο κάμερας</button></div>
+<p><small>Η προεπισκόπηση δεν καθρεφτίζεται. Δεν συλλέγονται όνομα ή αναγνωριστικό συσκευής.</small></p></section>
+<section class="card"><h2>2. Επιλέξτε μία κατάσταση</h2>
+<label for="trial-kind">Κατάσταση προς καταγραφή</label><select id="trial-kind">
+<option value="idle">Α. Ηρεμία / χωρίς σκόπιμη κίνηση</option><option value="ordinary_hand_motion">Β. Καθημερινή κίνηση χεριών</option><option value="hands_out_of_view">Γ. Χέρια εκτός κάδρου</option><option value="position_or_light_change">Δ. Αλλαγή θέσης ή φωτισμού</option></select>
+<p id="instructions"></p><p>Μετά την αντίστροφη μέτρηση των 3 δευτερολέπτων, η καταγραφή διαρκεί περίπου <strong>1,5 δευτερόλεπτο</strong>.</p>
+<div class="videos"><div><p>Ζωντανή κάμερα</p><video id="live-video" muted playsinline></video></div><div id="review-area" hidden><p>Επισκόπηση της καταγραφής</p><video id="review-video" controls muted playsinline></video></div></div>
+<p id="countdown" class="count" aria-live="assertive"></p><div class="row"><button id="record" disabled>Αντίστροφη μέτρηση και καταγραφή</button><button id="discard" class="secondary" disabled>Απόρριψη καταγραφής</button></div>
+<label id="confirm-area" hidden><input id="confirm-label" type="checkbox">Επιβεβαιώνω ότι έκανα την επιλεγμένη καθημερινή κατάσταση, χωρίς σκόπιμη νοηματική.</label>
+<button id="save" disabled>Επιβεβαίωση και τοπική αποθήκευση</button></section>
+<p id="status" role="status" aria-live="polite">Έλεγχος τοπικής υπηρεσίας…</p><p id="error" role="alert"></p>
+<section class="card"><h2>Αποθηκευμένες δοκιμές αυτής της συνεδρίας</h2><ul id="saved-list"><li id="no-saved">Δεν έχει αποθηκευτεί δοκιμή ακόμη.</li></ul><p><small>Μπορείτε να επαναλάβετε μια κατάσταση. Κάθε αποθήκευση δημιουργεί νέο αρχείο χωρίς να αντικαθιστά προηγούμενα.</small></p></section>
+</main><script type="module" src="/src/webcam-check.ts"></script></body></html>

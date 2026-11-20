@@ -1,0 +1,29 @@
+.local-assistant-open { margin-top: .7rem; }
+.local-assistant {
+  width: min(33rem, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  margin: auto;
+  padding: 1.25rem;
+  color: var(--ink);
+  overflow: auto;
+}
+.local-assistant::backdrop { background: #101f3878; }
+.local-assistant .recognition-card-head { margin-bottom: .7rem; }
+.local-assistant form { display: grid; justify-items: start; gap: .65rem; margin: .5rem 0 .85rem; }
+.local-assistant label { display: grid; gap: .3rem; width: 100%; font-size: .87rem; }
+.local-assistant :is(textarea, input) {
+  width: 100%;
+  padding: .55rem .65rem;
+  font: inherit;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+}
+.local-assistant textarea { resize: vertical; }
+.local-assistant summary { cursor: pointer; font-size: .87rem; }
+.local-assistant .microcopy { margin: 0; }
+.local-assistant-result { font-size: .9rem; overflow-wrap: anywhere; }
+.local-assistant-result p { white-space: pre-wrap; margin: .65rem 0; }
+.local-assistant-result ul { margin: .5rem 0; padding-inline-start: 1.2rem; }
+.local-assistant-clear p { margin: .65rem 0 .35rem; font-size: .87rem; }

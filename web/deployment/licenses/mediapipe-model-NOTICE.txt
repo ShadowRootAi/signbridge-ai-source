@@ -1,0 +1,16 @@
+MediaPipe Holistic pretrained model bundle
+
+Source: https://storage.googleapis.com/mediapipe-models/holistic_landmarker/holistic_landmarker/float16/latest/holistic_landmarker.task
+SHA-256: e2dab61191e2dcd0a15f943d8e3ed1dce13c82dfa597b9dd39f562975a50c3f8
+Unmodified downloaded artifact; no inference that the mutable latest URL is immutable.
+
+MediaPipe maintainer schmidt-sebastian stated on 2026-10-05 that MediaPipe source
+and models are Apache2 unless otherwise noted:
+https://github.com/google-ai-edge/mediapipe/issues/6355
+The SDK package @mediapipe/tasks-vision@1.2.2 also declares Apache-2.0.
+The Apache License text is included in mediapipe-APACHE-2.0.txt.
+
+This records the upstream general license statement and our exact asset hash.
+An artifact-specific SBOM/NOTICE for the installed compiled WASM was not present
+in its npm package; this bundle does not claim an independently reconciled
+third-party build inventory.

@@ -1,0 +1,76 @@
+{
+  "records": [
+    {
+      "file": "react-LICENSE.txt",
+      "package": "react",
+      "version": "19.3.1",
+      "source": "Installed exact npm package react@19.3.1/LICENSE",
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "exactPackageText": true
+    },
+    {
+      "file": "react-dom-LICENSE.txt",
+      "package": "react-dom",
+      "version": "19.3.1",
+      "source": "Installed exact npm package react-dom@19.3.1/LICENSE",
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "exactPackageText": true
+    },
+    {
+      "file": "scheduler-LICENSE.txt",
+      "package": "scheduler",
+      "version": "0.28.0",
+      "source": "Installed exact npm package scheduler@0.28.0/LICENSE",
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "exactPackageText": true
+    },
+    {
+      "file": "mediapipe-APACHE-2.0.txt",
+      "package": "@mediapipe/tasks-vision",
+      "version": "1.2.2",
+      "source": "https://raw.githubusercontent.com/google-ai-edge/mediapipe/master/LICENSE",
+      "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8",
+      "retrievedAt": "2026-11-08T19:04:42.248Z",
+      "exactPackageText": false,
+      "upstreamMainFallback": false
+    },
+    {
+      "file": "onnxruntime-MIT.txt",
+      "package": "onnxruntime-web / onnxruntime-common",
+      "version": "1.31.1",
+      "source": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.31.1/LICENSE",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "retrievedAt": "2026-11-08T19:04:42.263Z",
+      "exactPackageText": true,
+      "upstreamMainFallback": false
+    },
+    {
+      "file": "onnxruntime-ThirdPartyNotices.txt",
+      "package": "onnxruntime-web / onnxruntime-common",
+      "version": "1.31.1",
+      "source": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.31.1/ThirdPartyNotices.txt",
+      "sha256": "143764b952fdb1a7c69ce653bfba74a7744d6a8a573bfb73e235fba356c83de3",
+      "retrievedAt": "2026-11-08T19:04:42.284Z",
+      "exactPackageText": true,
+      "upstreamMainFallback": false
+    },
+    {
+      "file": "GSL-CC-BY-4.0.txt",
+      "package": "GSL dataset",
+      "version": "Zenodo 4756317",
+      "source": "https://creativecommons.org/licenses/by/4.0/legalcode.txt",
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "retrievedAt": "2026-11-08T19:04:42.354Z",
+      "exactPackageText": false,
+      "upstreamMainFallback": false
+    },
+    {
+      "file": "mediapipe-model-NOTICE.txt",
+      "source": "https://github.com/google-ai-edge/mediapipe/issues/6355",
+      "modelSha256": "e2dab61191e2dcd0a15f943d8e3ed1dce13c82dfa597b9dd39f562975a50c3f8",
+      "sha256": "e2c654fad3f9209eec384dd5e98530c7c92a7ac7479066cfb21862f032d4c343",
+      "generalUpstreamModelLicense": "Apache-2.0 unless otherwise noted"
+    }
+  ],
+  "note": "Preserved upstream texts and general upstream model-license statement, not a claim that every compiled transitive dependency notice has been independently reconciled."
+}

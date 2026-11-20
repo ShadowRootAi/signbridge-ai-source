@@ -1,0 +1,175 @@
+.recognition-page .page-heading {
+  padding-block: clamp(2rem, 5vw, 4rem) 1.5rem;
+}
+
+.recognition-page .page-heading h1 {
+  font-size: clamp(2.2rem, 5vw, 3.65rem);
+}
+
+.recognition-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+  gap: 1.15rem;
+  align-items: start;
+}
+
+.recognition-workspace .surface {
+  min-width: 0;
+  padding: clamp(1rem, 2.25vw, 1.5rem);
+}
+
+.recognition-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem;
+  margin-bottom: 1rem;
+}
+
+.recognition-card-head h2 { font-size: clamp(1rem, 2vw, 1.3rem); }
+
+.recognition-private {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .25rem .55rem;
+  border-radius: 2rem;
+  color: var(--ink);
+  background: var(--blue-soft, #e9f1ff);
+  font-size: .72rem;
+  white-space: nowrap;
+}
+
+.recognition-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: .75rem;
+  color: #e7efff;
+  background: radial-gradient(ellipse at 50% 45%, #213b65, #101f38 72%);
+}
+
+.recognition-stage video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #101f38;
+}
+
+.recognition-stage video[hidden] { display: none; }
+.recognition-placeholder, .recognition-countdown {
+  display: grid;
+  gap: .6rem;
+  place-items: center;
+  text-align: center;
+  font-size: .87rem;
+}
+.recognition-placeholder svg { opacity: .78; }
+
+.recognition-countdown {
+  position: absolute;
+  inset: 0;
+  align-content: center;
+  color: white;
+  background: #0b1837a8;
+}
+.recognition-countdown strong { font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1; }
+
+.recognition-recording {
+  position: absolute;
+  inset: .75rem auto auto .75rem;
+  padding: .28rem .6rem;
+  border-radius: 1rem;
+  color: white;
+  background: #8f2643;
+  font-size: .78rem;
+}
+
+.recognition-scan {
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: #6ba5ff;
+  transform-origin: left;
+  animation: recognition-scan 1.3s ease-in-out infinite alternate;
+}
+@keyframes recognition-scan { from { transform: scaleX(.18); } to { transform: scaleX(1); } }
+
+.recognition-clip-name {
+  overflow-wrap: anywhere;
+  margin: .65rem 0 0;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.recognition-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .85rem; }
+.recognition-actions .button { min-height: 44px; }
+.recognition-upload { position: relative; cursor: pointer; }
+.recognition-upload input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: inherit; }
+.recognition-upload:focus-within { outline: 2px solid var(--blue, #1756d6); outline-offset: 3px; }
+.recognition-upload:has(input:disabled) { cursor: not-allowed; opacity: .55; }
+
+.recognition-consent { display: flex; gap: .45rem; align-items: flex-start; margin-top: .85rem; font-size: .82rem; }
+.recognition-consent input { margin: .27rem .12rem 0 0; accent-color: var(--blue, #1756d6); }
+.recognition-hint, .recognition-error { margin: .75rem 0 0; }
+.recognition-examples { border-top: 1px solid var(--line); margin-top: 1.15rem; padding-top: .85rem; }
+.recognition-examples h3 { font-size: .9rem; }
+.recognition-examples p { margin: .55rem 0 0; }
+.recognition-examples .recognition-actions { margin-top: .5rem; }
+
+.recognition-response {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: .8rem;
+  min-height: clamp(9rem, 19vw, 16rem);
+  padding: 1.1rem 0;
+  border-block: 1px solid var(--line);
+}
+.recognition-response p { margin: 0; font-size: .88rem; color: var(--muted); }
+.recognition-response output {
+  color: var(--blue, #1756d6);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 730;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  animation: recognition-appear .2s ease-out;
+}
+.recognition-response output[data-accepted='false'] { color: var(--ink); font-size: clamp(1.3rem, 3vw, 1.85rem); }
+@keyframes recognition-appear { from { opacity: .5; } to { opacity: 1; } }
+.recognition-response-icon { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: .8rem; color: var(--blue, #1756d6); background: var(--blue-soft, #e9f1ff); }
+.recognition-reminder { display: flex; gap: .45rem; align-items: flex-start; margin: .8rem 0 0; font-size: .78rem; color: var(--muted); }
+.recognition-reminder svg { margin-top: .1rem; }
+.recognition-support { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; margin-block: 1rem; font-size: .8rem; color: var(--muted); }
+.recognition-support ul { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }
+.recognition-support li { margin: 0; padding: .12rem .48rem; border-radius: .38rem; color: var(--ink); background: var(--blue-soft, #e9f1ff); }
+.recognition-support .text-link { margin-left: auto; }
+
+.judge-trace { margin-top: 1rem; font-size: .86rem; }
+.judge-trace h3 { margin: 0 0 .6rem; font-size: 1rem; }
+.judge-trace p { margin: .5rem 0; color: var(--muted); }
+.judge-trace progress { width: 100%; accent-color: var(--blue, #1756d6); }
+.judge-stages { margin: 0; }
+.judge-stages > div { border-bottom: 1px solid var(--line); padding: .48rem 0; }
+.judge-stages dt { font-weight: 700; }
+.judge-stages dd { margin: .1rem 0 0; color: var(--muted); }
+.judge-scores { margin: .65rem 0 0; }
+.judge-scores summary { cursor: pointer; color: var(--blue, #1756d6); }
+.judge-scores ul { list-style: none; margin: .4rem 0; padding: 0; }
+.judge-scores li { display: flex; justify-content: space-between; gap: .6rem; font-variant-numeric: tabular-nums; }
+.judge-trace .judge-time { font-size: .78rem; }
+
+@media (max-width: 780px) {
+  .recognition-workspace { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 450px) {
+  .recognition-stage { aspect-ratio: 16 / 10; }
+  .recognition-support .text-link { flex-basis: 100%; margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .recognition-scan, .recognition-response output { animation: none; }
+}
